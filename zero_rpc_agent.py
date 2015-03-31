@@ -16,6 +16,7 @@ def test_connectivity(dest_ip, port, proto):
         proto_type = socket.SOCK_DGRAM
 
     sock = socket.socket(socket.AF_INET, proto_type)
+    sock.settimeout(10)
     status = sock.connect_ex((dest_ip, port))
     sock.close()
     print str(dest_ip) + " : " + str(port) + " : " + proto + " : " + str(status)
